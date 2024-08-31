@@ -6,6 +6,8 @@ This module is meant to be added to an existing forked customized keymap repo li
 
 This repo is meant only to serve as a starting point for customization such as adding your own art or animations. Simply fork this repo and make the edits you would like and you can easily share your customizations and animations with others as they can easily include your module in thier firmware builds with only a few changes to thier west file and build.yaml.
 
+For a complete example of forking and editing this repo to make a custom nice_view shield with custom animations, check out [https://github.com/GPeye/urchin-peripheral-animation](https://github.com/GPeye/urchin-peripheral-animation)
+
 Replace the url-base and shield name below with whatever you customize in your fork.
 
 ## Usage
