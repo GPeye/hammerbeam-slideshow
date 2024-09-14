@@ -1,14 +1,14 @@
-# nice-view-mod
-A copy of the nice!view shield from the official ZMK firmware as a ZMK module for the purposes of easily customizing.
-As provided, it should function exactly like the current nice!view shield present in the ZMK firmware.
+# Hammerbeam Slideshow
+This is a zmk module to implement a slideshow of 30 of Hammerbeam's 1 bit art on the peripheral (right) nice!view display.
 
-This module is meant to be added to an existing forked customized keymap repo like [this one for the Urchin board](https://github.com/duckyb/zmk-urchin) or [this one for the Chocofi](https://github.com/beekeeb/zmk-config-corne-chocofi-with-niceview) with build actions set up to build your firmware with github actions and is of course meant for boards with the nice!view. Please check for such forkable repos for your board if you do not currently have one.
+Hammerbeam, _the original artist of the iconic balloon and mountain art found in the default zmk firmware for the nice!view screen_, has more fantastic 1 bit art that you may not have seen.
 
-This repo is meant only to serve as a starting point for customization such as adding your own art or animations. Simply fork this repo and make the edits you would like and you can easily share your customizations and animations with others as they can easily include your module in thier firmware builds with only a few changes to thier west file and build.yaml.
+With Hammerbeam's consent, he allowed me use what I wanted of his public posts of his 1-bit art and format them as necessary to bring more of his work to the nice!view display. I made sure to keep his signature in each picture for attribution so others can find more of his work.
 
-For a complete example of forking and editing this repo to make a custom nice_view shield with custom animations, check out [https://github.com/GPeye/urchin-peripheral-animation](https://github.com/GPeye/urchin-peripheral-animation)
+The picture to be displayed by this module on the peripheral screen will be one of these 30 and will change every 10 seconds.
+![art](./assets/hammerbeam.png)
 
-Replace the url-base and shield name below with whatever you customize in your fork.
+![art](./assets/20240913_193934.png)
 
 ## Usage
 
@@ -27,7 +27,7 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: nice-view-mod                 #new entry
+    - name: hammerbeam-slideshow          #new entry
       remote: gpeye                       #new entry
       revision: main                      #new entry
   self:
@@ -40,7 +40,19 @@ Now simply swap out the default nice_view shield on the board for the custom one
 ---
 include:
   - board: nice_nano_v2
-    shield: urchin_left nice_view_adapter  nice_view_custom #custom shield
+    shield: urchin_left nice_view_adapter  nice_view
   - board: nice_nano_v2
     shield: urchin_right nice_view_adapter nice_view_custom #custom shield
+```
+
+by default the this urchin animation will run for a duration of 300 seconds, 10 seconds per picture, fairly slow to save battery
+
+If you want to change the speed of the animation, you can edit the speed by changing the CONFIG_CUSTOM_ANIMATION_SPEED in your .conf file
+
+For example:
+
+```conf
+# urchin.conf
+CONFIG_CUSTOM_ANIMATION_SPEED=300000 # 300 second total duration
+# 30 pictures, so 10 seconds per picture
 ```
